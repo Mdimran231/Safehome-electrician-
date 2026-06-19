@@ -1,10 +1,11 @@
 export const servicesData = [
     {
         id: "house-wiring",
+        category: "electrical",
         title: "Complete House Internal Concealed Wiring",
         shortDesc: "Premium safety layout blueprinting with fire-retardant multi-strand copper setup.",
         icon: "⚡",
-        bgImage:"/house.avif",
+        bgImage: "/house.avif",
         priceEstimation: "Based on structural square footage Layout",
         timeFrame: "3 - 7 Business Days depending on structure size",
         fullDetails: "Our premium internal wiring is engineered for lifetime protection. We perform exact calculation metrics of your home load before running lines. We use 100% pure electrolytic copper wires with dual layer insulation to counter moisture wall current leakages.",
@@ -17,6 +18,7 @@ export const servicesData = [
     },
     {
         id: "fault-diagnostics",
+        category: "electrical",
         title: "Hidden Short-Circuit Detection & Fault Repair",
         shortDesc: "Isolating high-voltage leaks and frequent MCB tripping loops using advanced instrumentation.",
         icon: "🛡️",
@@ -33,6 +35,7 @@ export const servicesData = [
     },
     {
         id: "modular-lighting",
+        category: "electrical",
         title: "Modular Kitchen, Room & Ambient Lighting",
         shortDesc: "Ambient COB & LED strip integration, custom modular electrical panels, and luxury false ceiling lighting layouts.",
         icon: "💡",
@@ -49,13 +52,14 @@ export const servicesData = [
     },
     {
         id: "appliance-repair",
-        title: "Appliance Repair, AC Installation & Stabilizer Setup",
-        shortDesc: "Dedicated heavy-gauge lines with MCB isolation for high-tonnage AC units and sensitive appliances.",
+        category: "electrical",
+        title: "Appliance Repair & Stabilizer Setup",
+        shortDesc: "Dedicated heavy-gauge lines with MCB isolation for sensitive appliances and general electronics.",
         icon: "🛠️",
         bgImage: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80",
         priceEstimation: "Based on appliance type and repair scope",
         timeFrame: "1 - 3 Business Days depending on appliance type",
-        fullDetails: "Many appliances fail due to improper power line configurations. We set up dedicated lines directly from the main meter with appropriately rated MCBs to ensure your high-tonnage AC units and sensitive electronics receive stable power without overloading your home circuits.",
+        fullDetails: "Many appliances fail due to improper power line configurations. We set up dedicated lines directly from the main meter with appropriately rated MCBs to ensure your sensitive electronics receive stable power without overloading your home circuits.",
         includedSteps: [
             "Dedicated heavy-gauge line installation from main meter.",
             "Appropriately rated MCB selection and installation.",
@@ -65,6 +69,7 @@ export const servicesData = [
     },
     {
         id: "emergency-repair",
+        category: "electrical",
         title: "Emergency Short Circuit & Tripping Repair",
         shortDesc: "24/7 rapid response for short circuits, power failures, and troubleshooting frequent MCB tripping in Patna.",
         icon: "⚡",
@@ -79,12 +84,12 @@ export const servicesData = [
             "Final phase diagnostic checks to ensure load stabilization."
         ]
     },
-    
     {
         id: "appliance-wiring",
-        title: "AC Wiring & Heavy Appliance Installation",
-        shortDesc: "Dedicated power lines for Air Conditioners, Geysers, and Heavy Kitchen Equipment with specific safety stabilizers.",
-        icon: "❄️",
+        category: "electrical",
+        title: "Heavy Appliance Wiring Installation",
+        shortDesc: "Dedicated power lines for Geysers, and Heavy Kitchen Equipment with specific safety stabilizers.",
+        icon: "⚙️",
         bgImage: "/Ac.jpg",
         priceEstimation: "Fixed per-node line routing charge",
         timeFrame: "2 - 4 Hours window per appliance loop",
@@ -98,6 +103,7 @@ export const servicesData = [
     },
     {
         id: "inverter-automation",
+        category: "electrical",
         title: "Automated Inverter & Battery Setup",
         shortDesc: "Seamless power backup with automatic changeover switches and smart double-battery configurations.",
         icon: "🔋",
@@ -114,6 +120,7 @@ export const servicesData = [
     },
     {
         id: "safety-earthing",
+        category: "electrical",
         title: "Shock-Proof Earthing & Safety Audit",
         shortDesc: "Advanced industrial copper-plate grounding setups and thorough safety checks to completely secure your home.",
         icon: "🛡️",
@@ -128,6 +135,56 @@ export const servicesData = [
             "Testing earth loop impedance using advanced digital earth testers (Target < 1 Ohm)."
         ]
     },
-    
-
+    /* --- AC SERVICES --- */
+    {
+        id: "ac-repairing",
+        category: "ac",
+        title: "We Also Repair: Expert AC Repairing & Diagnostics",
+        shortDesc: "Comprehensive troubleshooting for cooling loss, gas leaks, faulty compressors, and inverter PCB issues.",
+        icon: "🔧",
+        bgImage: "/Acrep.jpeg",
+        priceEstimation: "Based on fault diagnostics and spare parts",
+        timeFrame: "1 - 2 Hours rapid on-site diagnosis",
+        fullDetails: "Is your AC blowing warm air or leaking water? Our experts handle advanced troubleshooting—from R32/R410a gas charging and capillary unblocking to electronic PCB circuit board repairs—restoring ice-cold performance.",
+        includedSteps: [
+            "Nitrogen pressure testing for precise refrigerant leak identification.",
+            "Compressor health diagnostics and current/amperage load logging.",
+            "Fixing loose electrical terminals and replacing worn-out capacitors.",
+            "Final temperature grid testing at the louver level."
+        ]
+    },
+    {
+        id: "ac-installation",
+        category: "ac",
+        title: "We Also Provide: Split & Window AC Installation",
+        shortDesc: "Flawless mounting, copper pipe flaring, and vacuum leak testing for maximum cooling efficiency.",
+        icon: "❄️",
+        bgImage: "/installaion.jpg",
+        priceEstimation: "Fixed rate standard installation plans",
+        timeFrame: "2 - 3 Hours complete setup window",
+        fullDetails: "A bad installation can permanently damage your compressor. We ensure perfect water drainage slope levels for indoor units, heavy-duty out-door wall bracket anchoring, and proper vacuuming to pull out line moisture.",
+        includedSteps: [
+            "Sturdy positioning and vibration-free mounting of both units.",
+            "Precision insulation wrapping and bending of copper lines.",
+            "Deep system vacuum processing to protect the expansion valve.",
+            "Airflow optimization and running current load analysis."
+        ]
+    },
+    {
+        id: "ac-jet-cleaning",
+        category: "ac",
+        title: "We Also Do: High-Pressure Eco Jet Cleaning",
+        shortDesc: "Deep pressure-wash using professional service jackets for maximum cooling and low electricity bills.",
+        icon: "🚿",
+        bgImage: "/jet.jpeg",
+        priceEstimation: "Affordable per-unit flat rates",
+        timeFrame: "1 Hour deep cleaning session",
+        fullDetails: "Ordinary cleaning misses hidden dust deep within cooling coils. We use high-pressure water jet machines along with specialized service jackets to completely flush out dirt, bacteria, and mold blocks without messing up your walls.",
+        includedSteps: [
+            "Isolating internal electronics and PCBs with waterproof safety guards.",
+            "High-pressure jet washing of the evaporator coil, blower wheel, and drain pipe.",
+            "Thorough outdoor condenser chemical flush to clear scale buildup.",
+            "Post-service airflow testing and antibacterial refreshing spray."
+        ]
+    }
 ];

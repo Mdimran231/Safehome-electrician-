@@ -4,15 +4,21 @@ import { Helmet } from 'react-helmet-async';
 import { servicesData } from '../Data/servicesData';
 
 const Home = () => {
-    // Lead form state handling
+    // Main Lead form state handling
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
-        service: 'Emergency Short Circuit & Tripping Repair',
+        service: servicesData[0]?.title || 'Emergency Short Circuit & Tripping Repair',
         area: ''
     });
 
-    // FAQ active index handle karne ke liye state
+    // Hero quick form independent state handling
+    const [heroData, setHeroData] = useState({
+        name: '',
+        phone: '',
+        service: servicesData[0]?.title || 'Emergency Short Circuit & Tripping Repair'
+    });
+
     const [activeIndex, setActiveIndex] = useState(null);
     const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -48,7 +54,7 @@ const Home = () => {
         }
     ];
 
-    // WhatsApp Redirect Form Handler with completed validation and reset
+    // Main Lead Form Submit Handler
     const handleBookingSubmit = (e) => {
         e.preventDefault();
 
@@ -63,7 +69,7 @@ const Home = () => {
         window.open(whatsappUrl, '_blank');
         setFormSubmitted(true);
 
-        // Form reset logic using servicesData safely
+        // Reset to initial clean states safely
         setFormData({
             name: '',
             phone: '',
@@ -72,25 +78,28 @@ const Home = () => {
         });
     };
 
-    // Hero dropdown fast submission logic completed
+    // Hero Dropdown Quick Callback Handler
     const handleHeroFormSubmit = (e) => {
         e.preventDefault();
-        const heroName = e.target.elements.heroName.value || 'Valued Customer';
-        const heroPhone = e.target.elements.heroPhone.value || 'Not Provided';
-        const heroService = e.target.elements.heroService.value;
 
         const message = `⚡ *NEW HERO DROP-DOWN BOOKING* ⚡%0A%0A` +
-            `👤 *Customer Name:* ${heroName}%0A` +
-            `📞 *Phone Number:* ${heroPhone}%0A` +
-            `🛠️ *Service Required:* ${heroService}%0A` +
+            `👤 *Customer Name:* ${heroData.name || 'Valued Customer'}%0A` +
+            `📞 *Phone Number:* ${heroData.phone || 'Not Provided'}%0A` +
+            `🛠️ *Service Required:* ${heroData.service}%0A` +
             `📍 *Location:* Patna Area (Rapid Callback)%0A%0A` +
             `⚡ _Finalize this rapid booking immediately!_`;
 
         const whatsappUrl = `https://wa.me/919155536625?text=${message}`;
         window.open(whatsappUrl, '_blank');
+
+        setHeroData({
+            name: '',
+            phone: '',
+            service: servicesData[0]?.title || 'Emergency Short Circuit & Tripping Repair'
+        });
     };
 
-    // FAQ JSON-LD Schema Script (Crucial for SEO visibility)
+    // FAQ JSON-LD Schema Script (SEO Engine)
     const faqSchemaData = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -123,12 +132,11 @@ const Home = () => {
                     backgroundImage: `url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80')`
                 }}
             >
-                {/* Image ka original look maintain karne ke liye transparent soft shading */}
-                <div className="absolute inset-0 bg-black/40 z-0"></div>
+                <div className="absolute inset-0 bg-black/50 z-0"></div>
 
                 <div className="max-w-7xl mx-auto w-full relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                        {/* Left Side Section */}
+                        {/* Left Content Side */}
                         <div className="lg:col-span-7 text-center lg:text-left space-y-6">
                             <div className="inline-flex items-center space-x-2 bg-[#1E293B]/80 border border-white/20 px-4 py-1.5 rounded-full shadow-lg backdrop-blur-sm">
                                 <span className="h-2 w-2 rounded-full bg-[#EAB308] animate-pulse"></span>
@@ -177,7 +185,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        {/* Right Side Section: Hero Lead Booking Form */}
+                        {/* Right Quick Form Side */}
                         <div className="lg:col-span-5 w-full max-w-md mx-auto lg:ml-auto">
                             <div className="bg-white/95 border border-slate-100 rounded-3xl p-6 sm:p-8 shadow-[0_25px_50px_rgba(0,0,0,0.25)] relative overflow-hidden backdrop-blur-md">
                                 <div className="mb-6">
@@ -193,9 +201,10 @@ const Home = () => {
                                     <div>
                                         <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Your Name</label>
                                         <input
-                                            name="heroName"
                                             type="text"
                                             required
+                                            value={heroData.name}
+                                            onChange={(e) => setHeroData({ ...heroData, name: e.target.value })}
                                             placeholder="Enter your name"
                                             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-[#1E293B] placeholder-slate-400 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all"
                                         />
@@ -204,10 +213,11 @@ const Home = () => {
                                     <div>
                                         <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Contact Number</label>
                                         <input
-                                            name="heroPhone"
                                             type="tel"
                                             required
                                             pattern="[0-9]{10}"
+                                            value={heroData.phone}
+                                            onChange={(e) => setHeroData({ ...heroData, phone: e.target.value })}
                                             placeholder="Enter mobile number"
                                             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-[#1E293B] placeholder-slate-400 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all"
                                         />
@@ -216,7 +226,11 @@ const Home = () => {
                                     <div>
                                         <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Required Service</label>
                                         <div className="relative">
-                                            <select name="heroService" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-700 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all appearance-none cursor-pointer">
+                                            <select 
+                                                value={heroData.service}
+                                                onChange={(e) => setHeroData({ ...heroData, service: e.target.value })}
+                                                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-700 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all appearance-none cursor-pointer"
+                                            >
                                                 {servicesData.map((s, idx) => (
                                                     <option key={idx} value={s.title} className="bg-white text-[#1E293B]">{s.title}</option>
                                                 ))}
@@ -321,84 +335,142 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* 3. SERVICES GRID SECTION (Light Modern Background) */}
+            {/* 3. SERVICES GRID SECTION (Electrical + AC Services Categorized) */}
             <section className="py-20 px-4 bg-[#F8FAFC] border-t border-slate-200 relative overflow-hidden">
-                {/* Ambient Subtle Warm Highlights */}
+                {/* Ambient Subtle Highlights */}
                 <div className="absolute top-0 left-1/4 w-80 h-80 bg-[#EAB308]/5 rounded-full blur-[120px] pointer-events-none"></div>
-                <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-yellow-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+                <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-                <div className="max-w-7xl mx-auto space-y-12 relative z-10">
-                    {/* Section Header Grid */}
-                    <div className="text-center space-y-3">
-                        <div className="inline-flex items-center space-x-2 bg-white border border-slate-200 px-4 py-1.5 rounded-full shadow-sm">
-                            <span className="h-2 w-2 rounded-full bg-[#EAB308] animate-pulse"></span>
-                            <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">Certified Solutions</span>
+                <div className="max-w-7xl mx-auto space-y-16 relative z-10">
+                    
+                    {/* ================= ELECTRICAL SERVICES (Top 6) ================= */}
+                    <div className="space-y-12">
+                        <div className="text-center space-y-3">
+                            <div className="inline-flex items-center space-x-2 bg-white border border-slate-200 px-4 py-1.5 rounded-full shadow-sm">
+                                <span className="h-2 w-2 rounded-full bg-[#EAB308] animate-pulse"></span>
+                                <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">Certified Experts</span>
+                            </div>
+                            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+                                Our Professional <span className="bg-gradient-to-r from-[#EAB308] to-amber-500 bg-clip-text text-transparent">Electrical Services</span>
+                            </h2>
+                            <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-medium">
+                                Operated exclusively by background-verified local technicians in Patna.
+                            </p>
                         </div>
-                        <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
-                            Our Professional <span className="bg-gradient-to-r from-[#EAB308] to-amber-500 bg-clip-text text-transparent">Electrical Services</span>
-                        </h2>
-                        <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-medium">
-                            Operated exclusively by certified, background-verified technicians. Select any service node to explore detailed layouts and implementation steps.
-                        </p>
+
+                        {/* Electrical Cards Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {servicesData
+                                .filter(service => service.category === 'electrical' || !service.category) // Fallback catch
+                                .slice(0, 6)
+                                .map((service) => (
+                                    <Link
+                                        key={service.id}
+                                        to={`/services/${service.id}`}
+                                        className="bg-white rounded-3xl border border-slate-100 hover:border-[#EAB308]/40 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(234,179,8,0.08)] transition-all duration-300 block relative group overflow-hidden shadow-md"
+                                    >
+                                        <div className="h-52 w-full overflow-hidden relative bg-slate-100 border-b border-slate-100">
+                                            <img
+                                                src={service.bgImage}
+                                                alt={service.title}
+                                                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105 opacity-85 group-hover:opacity-100"
+                                                loading="lazy"
+                                            />
+                                            <div className="absolute top-4 left-4 bg-white/90 border border-white h-11 w-11 rounded-xl flex items-center justify-center text-xl shadow-md backdrop-blur-sm">
+                                                {service.icon}
+                                            </div>
+                                        </div>
+                                        <div className="p-6 sm:p-8 flex flex-col justify-between h-56">
+                                            <div>
+                                                <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-2 group-hover:text-[#EAB308] transition-colors duration-200 leading-snug line-clamp-2">
+                                                    {service.title}
+                                                </h3>
+                                                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 font-medium">
+                                                    {service.shortDesc}
+                                                </p>
+                                            </div>
+                                            <div className="text-xs font-black uppercase tracking-wider text-[#EAB308] flex items-center gap-1.5 border-t border-slate-100 pt-4 mt-auto">
+                                                <span>Explore Details</span>
+                                                <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                        </div>
                     </div>
 
-                    {/* Dynamic Mapping Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-6">
-                        {servicesData.slice(0, 6).map((service) => (
-                            <Link
-                                key={service.id}
-                                to={`/services/${service.id}`}
-                                className="bg-white rounded-3xl border border-slate-100 hover:border-[#EAB308]/40 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(234,179,8,0.08)] transition-all duration-300 block relative group overflow-hidden shadow-md"
-                            >
-                                {/* Card Image Cover */}
-                                <div className="h-52 w-full overflow-hidden relative bg-slate-100 border-b border-slate-100">
-                                    <img
-                                        src={service.bgImage}
-                                        alt={service.title}
-                                        className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105 opacity-85 group-hover:opacity-100"
-                                        loading="lazy"
-                                        onError={(e) => {
-                                            e.target.src = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80";
-                                        }}
-                                    />
-                                    <div className="absolute top-4 left-4 bg-white/90 border border-white h-11 w-11 rounded-xl flex items-center justify-center text-xl shadow-md backdrop-blur-sm">
-                                        {service.icon}
-                                    </div>
-                                </div>
+                    {/* Visual Partition Line */}
+                    <div className="border-t border-slate-200/60 my-12 max-w-4xl mx-auto"></div>
 
-                                {/* Text Body */}
-                                <div className="p-6 sm:p-8 flex flex-col justify-between h-56">
-                                    <div>
-                                        <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-2 group-hover:text-[#EAB308] transition-colors duration-200 leading-snug line-clamp-2">
-                                            {service.title}
-                                        </h3>
-                                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 font-medium">
-                                            {service.shortDesc}
-                                        </p>
-                                    </div>
+                    {/* ================= AC SERVICES (Next 3) ================= */}
+                    <div className="space-y-12">
+                        <div className="text-center space-y-3">
+                            <div className="inline-flex items-center space-x-2 bg-white border border-slate-200 px-4 py-1.5 rounded-full shadow-sm">
+                                <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
+                                <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">Cooling Solutions</span>
+                            </div>
+                            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                                We Also Offer <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Professional AC Services</span>
+                            </h2>
+                            <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-medium">
+                                Keep your home cool with our premium split and window AC repair, installation, and deep jet cleaning.
+                            </p>
+                        </div>
 
-                                    <div className="text-xs font-black uppercase tracking-wider text-[#EAB308] flex items-center gap-1.5 border-t border-slate-100 pt-4 mt-auto">
-                                        <span>Explore Technical Details</span>
-                                        <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
+                        {/* AC Cards Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {servicesData
+                                .filter(service => service.category === 'ac')
+                                .slice(0, 3)
+                                .map((service) => (
+                                    <Link
+                                        key={service.id}
+                                        to={`/services/${service.id}`}
+                                        className="bg-white rounded-3xl border border-slate-100 hover:border-blue-400/40 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,130,246,0.08)] transition-all duration-300 block relative group overflow-hidden shadow-md"
+                                    >
+                                        <div className="h-52 w-full overflow-hidden relative bg-slate-100 border-b border-slate-100">
+                                            <img
+                                                src={service.bgImage}
+                                                alt={service.title}
+                                                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105 opacity-85 group-hover:opacity-100"
+                                                loading="lazy"
+                                            />
+                                            <div className="absolute top-4 left-4 bg-white/90 border border-white h-11 w-11 rounded-xl flex items-center justify-center text-xl shadow-md backdrop-blur-sm">
+                                                {service.icon}
+                                            </div>
+                                        </div>
+                                        <div className="p-6 sm:p-8 flex flex-col justify-between h-56">
+                                            <div>
+                                                <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-200 leading-snug line-clamp-2">
+                                                    {service.title}
+                                                </h3>
+                                                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 font-medium">
+                                                    {service.shortDesc}
+                                                </p>
+                                            </div>
+                                            <div className="text-xs font-black uppercase tracking-wider text-blue-600 flex items-center gap-1.5 border-t border-slate-100 pt-4 mt-auto">
+                                                <span>Explore Details</span>
+                                                <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                        </div>
                     </div>
 
-                    {/* View All Services Button */}
+                    {/* View All Services CTA */}
                     <div className="text-center pt-8">
                         <Link
                             to="/services"
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-[#EAB308] to-[#CA8A04] text-slate-900 font-black px-10 py-4 rounded-xl text-sm uppercase tracking-wider shadow-[0_10px_25px_rgba(234,179,8,0.25)] hover:brightness-110 transition-all duration-200 transform hover:-translate-y-0.5"
                         >
-                            ⚙️ View All Services
+                            ⚙️ View All Available Services
                         </Link>
                     </div>
                 </div>
             </section>
 
-            {/* 4. WHY CHOOSE US SECTION (Dark Premium Background) */}
+            {/* 4. WHY CHOOSE US SECTION */}
             <section className="py-20 px-4 bg-[#0F172A] text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:20px_20px] opacity-30 z-0"></div>
 
@@ -436,45 +508,121 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* 5. FAQ SECTION */}
-            <section className="py-20 px-4 bg-white border-t border-gray-100">
-                <div className="max-w-4xl mx-auto space-y-12">
-                    <div className="text-center space-y-3">
-                        <div className="inline-flex items-center space-x-2 bg-[#1E293B]/5 px-4 py-1.5 rounded-full shadow-inner">
-                            <span className="text-xs font-black tracking-wider text-[#1E293B] uppercase flex items-center gap-1">
-                                🤔 Patna Local Context
-                            </span>
+            {/* 5. MAIN LEAD BOOKING FORM SECTION */}
+            <section className="py-20 px-4 bg-gradient-to-t from-slate-50 to-white border-t border-slate-100">
+                <div className="max-w-3xl mx-auto bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#EAB308]/10 rounded-bl-full pointer-events-none"></div>
+                    <div className="text-center space-y-2 mb-8">
+                        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Schedule a Verified Electrician Today</h2>
+                        <p className="text-slate-500 text-sm font-medium">Fill out the quick form below to sync directly via WhatsApp with our technical dispatch team in Patna.</p>
+                    </div>
+
+                    <form onSubmit={handleBookingSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Your Full Name</label>
+                            <input
+                                type="text"
+                                required
+                                value={formData.name}
+                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                placeholder="Enter first & last name"
+                                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-[#1E293B] placeholder-slate-400 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all shadow-sm"
+                            />
                         </div>
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1E293B] tracking-tight">
-                            Frequently Asked <span className="text-[#EAB308]">Questions</span>
-                        </h2>
-                        <p className="text-gray-500 text-sm max-w-md mx-auto leading-relaxed">
-                            Find rapid answers about our services, safety protocols, response times, and pricing in Patna City.
-                        </p>
+
+                        <div>
+                            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Active Mobile Number</label>
+                            <input
+                                type="tel"
+                                required
+                                pattern="[0-9]{10}"
+                                value={formData.phone}
+                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                placeholder="10-digit mobile number"
+                                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-[#1E293B] placeholder-slate-400 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all shadow-sm"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Service Node Category</label>
+                            <div className="relative">
+                                <select
+                                    value={formData.service}
+                                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-bold text-slate-700 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm"
+                                >
+                                    {servicesData.map((s, idx) => (
+                                        <option key={idx} value={s.title} className="bg-white text-[#1E293B]">{s.title}</option>
+                                    ))}
+                                </select>
+                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                                    ▼
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Service Location (Patna Area)</label>
+                            <input
+                                type="text"
+                                required
+                                value={formData.area}
+                                onChange={(e) => setFormData({ ...formData, area: e.target.value })}
+                                placeholder="e.g. Kankarbagh, Boring Road, etc."
+                                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-[#1E293B] placeholder-slate-400 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all shadow-sm"
+                            />
+                        </div>
+
+                        <div className="sm:col-span-2 pt-2">
+                            <button
+                                type="submit"
+                                className="w-full bg-[#1E293B] hover:bg-slate-700 text-white font-black py-4 rounded-xl text-sm tracking-widest uppercase transition-all duration-200 shadow-lg"
+                            >
+                                ⚡ Dispath Professional via WhatsApp
+                            </button>
+                            {formSubmitted && (
+                                <p className="text-center text-xs text-green-600 font-bold mt-3 animate-fade-in">
+                                    ✔ Booking payload generated! Redirecting to WhatsApp API secure pipeline...
+                                </p>
+                            )}
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            {/* 6. FAQ ACCORDION SECTION */}
+            <section className="py-20 px-4 bg-white border-t border-slate-100">
+                <div className="max-w-4xl mx-auto space-y-12">
+                    <div className="text-center space-y-2">
+                        <h2 className="text-3xl font-black text-slate-900 tracking-tight">Frequently Asked Queries (FAQs)</h2>
+                        <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed">Everything you need to understand regarding safety norms, timelines, and legal pricing structural transparency.</p>
                     </div>
 
                     <div className="space-y-4">
-                        {faqData.map((faq, index) => {
-                            const isOpen = activeIndex === index;
-                            return (
-                                <div key={index} className="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
-                                    <button
-                                        onClick={() => toggleFAQ(index)}
-                                        className="w-full flex justify-between items-center p-5 text-left bg-slate-50 hover:bg-slate-100/80 transition-all duration-200"
-                                    >
-                                        <span className="font-bold text-slate-800 text-sm sm:text-base">{faq.question}</span>
-                                        <span className={`text-xl transition-transform duration-200 text-slate-500 ${isOpen ? 'rotate-180 text-[#EAB308]' : ''}`}>
-                                            ▼
-                                        </span>
-                                    </button>
-                                    {isOpen && (
-                                        <div className="p-5 bg-white border-t border-slate-50 text-slate-600 text-xs sm:text-sm leading-relaxed font-medium">
-                                            {faq.answer}
-                                        </div>
-                                    )}
+                        {faqData.map((faq, index) => (
+                            <div 
+                                key={index} 
+                                className="bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transition-all duration-200"
+                            >
+                                <button
+                                    onClick={() => toggleFAQ(index)}
+                                    className="w-full flex items-center justify-between p-5 text-left font-bold text-slate-800 hover:bg-slate-100/70 transition-colors"
+                                >
+                                    <span className="text-sm md:text-base pr-4">{faq.question}</span>
+                                    <span className={`text-xs transform transition-transform duration-200 ${activeIndex === index ? 'rotate-180 text-[#EAB308]' : 'text-slate-400'}`}>
+                                        ▼
+                                    </span>
+                                </button>
+                                
+                                <div 
+                                    className={`transition-all duration-300 ease-in-out overflow-hidden ${activeIndex === index ? 'max-h-[500px] border-t border-slate-200/60 bg-white' : 'max-h-0'}`}
+                                >
+                                    <p className="p-5 text-slate-600 text-xs md:text-sm leading-relaxed font-medium">
+                                        {faq.answer}
+                                    </p>
                                 </div>
-                            );
-                        })}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
