@@ -10,6 +10,7 @@ import Contact from './pages/Contact.jsx';
 import OurWork from './pages/Work.jsx';
 import Services from './pages/Services.jsx';
 import ServiceDetail from './pages/ServiceDetail.jsx';
+import FloatingContact from './components/WhatsAppToggle.jsx'; // Floating WhatsApp 
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
         </Routes>
-
+       <FloatingContact/>
         {/* Fixed Footer bottom layout */}
         <Footer />
       </div>
