@@ -4,7 +4,7 @@ import { MessageSquare, Phone } from 'lucide-react';
 
 const FloatingContact = () => {
   // WhatsApp ke liye bina '+' ke number use karna better hota hai
-  const phone = "918540038107"; 
+  const phone = "9155536625"; 
 
   return (
     <div className="fixed bottom-6 right-4 md:right-8 flex flex-col gap-4 z-[999] items-end">
