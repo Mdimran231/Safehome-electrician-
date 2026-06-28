@@ -1,12 +1,13 @@
 import React from 'react';
 
 const Footer = () => {
-    // Localized services array agar aap component ke andar hi rakhna chahein
+    // Upgraded array representing both advanced AC/Cooling and Technical Electrical works
     const servicesList = [
+        "AC Installation & Deep Jet Washing",
+        "HVAC Gas Charging & Leak Testing",
         "Home Wiring & Internal Concealing",
-        "Inverter & Battery Installation",
+        "Inverter, Battery & Geyser Setup",
         "Short Circuit & Fault Diagnostics",
-        "Appliance Repair & AC Installation",
         "Industrial Panel & DB Board Setup"
     ];
 
@@ -21,16 +22,16 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-4 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/5">
                     
-                    {/* Column 1: Brand & Identity */}
+                    {/* Column 1: Brand & Unified Identity */}
                     <div className="lg:col-span-4 space-y-4">
                         <div className="flex items-center space-x-2">
-                            <span className="text-2xl animate-pulse">⚡</span>
+                            <span className="text-2xl animate-pulse">❄️</span>
                             <span className="text-xl font-black tracking-wider text-white">
-                                SAFE HOME <span className="text-[#EAB308]">ELECTRICALS</span>
+                                SAFE HOME <span className="text-[#EAB308]">SERVICES</span>
                             </span>
                         </div>
                         <p className="text-sm text-slate-400 leading-relaxed font-medium">
-                            Patna's premier certified electrical engineering company. We safeguard your households with precision diagnostics and fire-retardant industrial safety frameworks.
+                            Patna's premier certified AC engineering and electrical solutions provider. We safeguard your households with precision cooling diagnostics and fire-retardant safety frameworks.
                         </p>
                         <div className="flex items-center space-x-3 pt-2">
                             <div className="inline-flex items-center space-x-2 bg-[#1C2541] border border-white/10 px-3 py-1 rounded-full text-xs font-bold text-slate-300">
@@ -71,13 +72,13 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Column 4: Emergency Contacts */}
+                    {/* Column 4: Emergency Contacts with Live Hyperlink */}
                     <div className="lg:col-span-3 space-y-4">
                         <h4 className="text-xs font-black uppercase tracking-widest text-slate-200 border-l-2 border-[#EAB308] pl-2.5">
                             Emergency Contact
                         </h4>
                         <div className="space-y-3">
-                            <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-3 bg-[#1C2541]/50 border border-white/5 hover:border-[#EAB308]/30 p-3 rounded-xl transition-all group">
+                            <a href="tel:+919155536625" className="flex items-center gap-3 bg-[#1C2541]/50 border border-white/5 hover:border-[#EAB308]/30 p-3 rounded-xl transition-all group">
                                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#EAB308] to-[#CA8A04] flex items-center justify-center text-[#0B1329] font-bold text-base shadow-md">
                                     📞
                                 </div>
@@ -93,7 +94,7 @@ const Footer = () => {
                                 </div>
                                 <div>
                                     <p className="text-[10px] uppercase font-black tracking-wider text-slate-400">Support Mail</p>
-                                    <p className="text-xs font-bold text-slate-200">help@safehomeelectricals.com</p>
+                                    <p className="text-xs font-bold text-slate-200">mdanwararman862@gmail.com</p>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +106,7 @@ const Footer = () => {
                 <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
                     <div className="space-y-1">
                         <p className="text-xs font-semibold text-slate-400">
-                            © {new Date().getFullYear()} Safe Home Electricals. All Rights Reserved.
+                            © {new Date().getFullYear()} Safe Home Services. All Rights Reserved.
                         </p>
                         <p className="text-[11px] text-slate-500 font-medium">
                             Operated by technically certified, background-verified field engineers across Patna districts.

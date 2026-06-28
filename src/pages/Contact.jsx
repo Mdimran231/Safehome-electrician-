@@ -13,14 +13,14 @@ const Contact = () => {
         {
             icon: "📧",
             title: "Official Correspondence",
-            detail: "help@safehomeelectricals.com",
+            detail: "mdanwararman862@gmail.com",
             subtext: "Expect a response within 2 hours",
-            action: "mailto:help@safehomeelectricals.com"
+            action: "mailto:mdanwararman862@gmail.com"
         },
         {
             icon: "📍",
             title: "Central Operations Hub",
-            detail: "Kankarbagh Main Road, Near Kanti Factory, Patna, Bihar 800020",
+            detail: "Shop No. 12, Sector b, Police Colony, Patna, Bihar 800002",
             subtext: "Dispatched locally across all sectors",
             action: "https://maps.google.com"
         }
