@@ -124,7 +124,6 @@ const Home = () => {
                 </script>
             </Helmet>
 
-            {/* 1. HERO SECTION */}
             <section
                 className="relative bg-cover bg-center bg-no-repeat min-h-[85vh] flex items-center overflow-hidden pt-32 pb-16 px-4"
                 style={{
@@ -168,7 +167,12 @@ const Home = () => {
                                 </a>
                             </div>
 
-                            <div className="pt-8 border-t border-white/20 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+                            {/* Updated Grid with 4 items to include Visiting Charge */}
+                            <div className="pt-8 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto lg:mx-0">
+                                <div className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                                    <p className="text-2xl sm:text-3xl font-black text-[#EAB308]">₹299</p>
+                                    <p className="text-[11px] text-slate-200 font-bold uppercase tracking-wider">Visiting Charge</p>
+                                </div>
                                 <div className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                                     <p className="text-2xl sm:text-3xl font-black text-[#EAB308]">45 Min</p>
                                     <p className="text-[11px] text-slate-200 font-bold uppercase tracking-wider">Patna Response</p>
@@ -225,7 +229,7 @@ const Home = () => {
                                     <div>
                                         <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Required Service</label>
                                         <div className="relative">
-                                            <select 
+                                            <select
                                                 value={heroData.service}
                                                 onChange={(e) => setHeroData({ ...heroData, service: e.target.value })}
                                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-700 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all appearance-none cursor-pointer"
@@ -238,6 +242,12 @@ const Home = () => {
                                                 ▼
                                             </div>
                                         </div>
+                                    </div>
+
+                                    {/* Inline Visiting Charge Notice inside Form */}
+                                    <div className="flex items-center justify-between bg-amber-50 border border-amber-200 rounded-xl px-4 py-2.5 text-xs text-amber-800 font-bold">
+                                        <span>Standard Visiting Charge:</span>
+                                        <span className="text-base font-black text-amber-900">₹299</span>
                                     </div>
 
                                     <button
@@ -336,7 +346,7 @@ const Home = () => {
                 <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#EAB308]/5 rounded-full blur-[120px] pointer-events-none"></div>
 
                 <div className="max-w-7xl mx-auto space-y-16 relative z-10">
-                    
+
                     {/* AC SERVICES */}
                     <div className="space-y-12">
                         <div className="text-center space-y-3">
@@ -362,6 +372,7 @@ const Home = () => {
                                         to={`/services/${service.id}`}
                                         className="bg-white rounded-3xl border border-slate-100 hover:border-blue-400/40 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,130,246,0.08)] transition-all duration-300 block relative group overflow-hidden shadow-md"
                                     >
+                                        {/* Top Media / Thumbnail Section */}
                                         <div className="h-52 w-full overflow-hidden relative bg-slate-100 border-b border-slate-100">
                                             <img
                                                 src={service.bgImage}
@@ -369,29 +380,54 @@ const Home = () => {
                                                 className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105 opacity-85 group-hover:opacity-100"
                                                 loading="lazy"
                                             />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
+
                                             <div className="absolute top-4 left-4 bg-white/90 border border-white h-11 w-11 rounded-xl flex items-center justify-center text-xl shadow-md backdrop-blur-sm">
                                                 {service.icon}
                                             </div>
+
+                                            {/* Floating Top Right Price Token */}
+                                            {service.priceEstimation  && (
+                                                <div className="absolute top-4 right-4 bg-emerald-600 text-white text-[10px] font-black px-2.5 py-1.5 rounded-xl shadow-md tracking-wider uppercase">
+                                                    {service.priceEstimation.split(' ')[0]}
+                                                </div>
+                                            )}
                                         </div>
+
+                                        {/* Bottom Info & CTA Frame */}
                                         <div className="p-6 sm:p-8 flex flex-col justify-between h-56">
                                             <div>
                                                 <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-200 leading-snug line-clamp-2">
                                                     {service.title}
                                                 </h3>
                                                 <p className="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 font-medium">
-                                                    {service.shortDesc}
+                                                    {service.shortDesc || service.fullDetails}
                                                 </p>
                                             </div>
-                                            <div className="text-xs font-black uppercase tracking-wider text-blue-600 flex items-center gap-1.5 border-t border-slate-100 pt-4 mt-auto">
-                                                <span>Explore Details</span>
-                                                <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+
+                                            {/* Clean Pricing Meta Strip */}
+                                            <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+                                                {service.priceEstimation ? (
+                                                    <div className="flex flex-col">
+                                                        <span className="text-[9px] uppercase font-black text-slate-400 tracking-wider leading-none mb-0.5">Rate Card Price</span>
+                                                        <span className="text-sm font-black text-slate-800 tracking-tight">
+                                                            {service.priceEstimation}
+                                                        </span>
+                                                    </div>
+                                                ) : (
+                                                    <span className="text-blue-600">Explore Details</span>
+                                                )}
+
+                                                <div className="text-blue-600 flex items-center gap-1">
+                                                    <span className="hidden sm:inline-block">View Scope</span>
+                                                    <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </Link>
                                 ))}
                         </div>
                     </div>
-
                     <div className="border-t border-slate-200/60 my-12 max-w-4xl mx-auto"></div>
 
                     {/* ELECTRICAL SERVICES */}
@@ -525,8 +561,8 @@ const Home = () => {
                         {faqData.map((faq, idx) => {
                             const isOpen = activeIndex === idx;
                             return (
-                                <div 
-                                    key={idx} 
+                                <div
+                                    key={idx}
                                     className="border border-slate-200/80 rounded-2xl overflow-hidden bg-white transition-all duration-200 shadow-sm hover:border-slate-300"
                                 >
                                     <button
@@ -539,8 +575,8 @@ const Home = () => {
                                             ＋
                                         </span>
                                     </button>
-                                    
-                                    <div 
+
+                                    <div
                                         className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0'}`}
                                     >
                                         <p className="p-6 text-slate-600 text-xs sm:text-sm leading-relaxed bg-slate-50/50 font-medium">

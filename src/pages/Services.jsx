@@ -18,7 +18,7 @@ const Services = () => {
                         <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">Expert Architecture</span>
                     </div>
                     <h1 className="text-4xl sm:text-5xl font-black mb-4 tracking-tight text-slate-900">
-                        Our Premium <span className="text-[#CA8A04]">Electrical Solutions</span>
+                        Our Premium <span className="text-[#CA8A04]">Electrical & AC Solutions</span>
                     </h1>
                     <p className="text-sm sm:text-base text-slate-500 font-medium">
                         Click on any technical service node below to examine complete scope procedures, workflow steps, and delivery timelines.
@@ -39,7 +39,7 @@ const Services = () => {
                                     src={service.bgImage} 
                                     alt={service.title} 
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-                                />
+                                bag/>
                                 {/* Overlay to ensure image looks clean on light theme */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
                                 
@@ -47,6 +47,13 @@ const Services = () => {
                                 <div className="absolute top-4 left-4 bg-white/95 border border-slate-200/50 h-12 w-12 rounded-xl flex items-center justify-center text-2xl shadow-md backdrop-blur-sm">
                                     {service.icon}
                                 </div>
+
+                                {/* Dynamic Condition: Shows Green Price Tag ONLY for AC Services */}
+                                {service.category === 'ac' && service.priceEstimation && (
+                                    <div className="absolute top-4 right-4 bg-emerald-500 text-white text-[11px] font-black px-3 py-1.5 rounded-xl shadow-md tracking-wide uppercase border border-emerald-400/30">
+                                        ✓ {service.priceEstimation.includes('Starts') ? 'Best Deal' : service.priceEstimation.split(' ')[0]}
+                                    </div>
+                                )}
                             </div>
 
                             {/* Card Content */}
@@ -56,14 +63,23 @@ const Services = () => {
                                         {service.title}
                                     </h3>
                                     <p className="text-xs sm:text-sm text-slate-500 mt-2 font-medium leading-relaxed">
-                                        {service.shortDesc}
+                                        {service.shortDesc || service.fullDetails}
                                     </p>
                                 </div>
 
-                                {/* Bottom Action Strip */}
-                                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#CA8A04]">
-                                    <span>Review Technical Scope</span>
-                                    <span className="group-hover:translate-x-1 transition-transform inline-block">Explore ➔</span>
+                                {/* Bottom Action Strip (With integrated pricing layout for AC) */}
+                                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+                                    {service.category === 'ac' && service.priceEstimation ? (
+                                        <div className="flex flex-col">
+                                            <span className="text-[9px] uppercase font-black text-slate-400 tracking-wider leading-none mb-0.5">Rate Card Price</span>
+                                            <span className="text-sm font-black text-slate-800 tracking-tight">
+                                                {service.priceEstimation}
+                                            </span>
+                                        </div>
+                                    ) : (
+                                        <span className="text-[#CA8A04]">Review Technical Scope</span>
+                                    )}
+                                    <span className="text-[#CA8A04] group-hover:translate-x-1 transition-transform inline-block">Explore ➔</span>
                                 </div>
                             </div>
                         </div>

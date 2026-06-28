@@ -137,22 +137,22 @@ export const servicesData = [
     },
     /* --- AC SERVICES --- */
     {
-        id: "ac-repairing",
-        category: "ac",
-        title: "We Also Repair: Expert AC Repairing & Diagnostics",
-        shortDesc: "Comprehensive troubleshooting for cooling loss, gas leaks, faulty compressors, and inverter PCB issues.",
-        icon: "🔧",
-        bgImage: "/Acrep.jpeg",
-        priceEstimation: "Based on fault diagnostics and spare parts",
-        timeFrame: "1 - 2 Hours rapid on-site diagnosis",
-        fullDetails: "Is your AC blowing warm air or leaking water? Our experts handle advanced troubleshooting—from R32/R410a gas charging and capillary unblocking to electronic PCB circuit board repairs—restoring ice-cold performance.",
-        includedSteps: [
-            "Nitrogen pressure testing for precise refrigerant leak identification.",
-            "Compressor health diagnostics and current/amperage load logging.",
-            "Fixing loose electrical terminals and replacing worn-out capacitors.",
-            "Final temperature grid testing at the louver level."
-        ]
-    },
+    id: "ac-repairing",
+    category: "ac",
+    title: "Expert Split & Window AC Repairing",
+    shortDesc: "Accurate fault diagnosis, compressor troubleshooting, and parts replacement for instant cooling recovery.",
+    icon: "🔧",
+    bgImage: "/Acrep.jpeg",
+    priceEstimation: "₹499 (Inspection & Repair)",
+    timeFrame: "45 - 90 Minutes quick turnaround window",
+    fullDetails: "Don't let a breakdown ruin your comfort. Our senior technicians carry advanced diagnostic tools to resolve complex issues like zero cooling, unusual rattling noises, indoor water leaking, or frequent compressor tripping on the spot.",
+    includedSteps: [
+        "Advanced digital diagnosis to isolate electrical or mechanical circuit faults.",
+        "Thorough testing of compressor coil health, capacitor nodes, and fan motors.",
+        "On-the-spot fixing of sensor errors, broken PCB relays, or drain line blockages.",
+        "Post-repair functional stress test to check uniform airthrow and current stability."
+    ]
+},
     {
         id: "ac-installation",
         category: "ac",
@@ -160,7 +160,7 @@ export const servicesData = [
         shortDesc: "Flawless mounting, copper pipe flaring, and vacuum leak testing for maximum cooling efficiency.",
         icon: "❄️",
         bgImage: "/installaion.jpg",
-        priceEstimation: "Fixed rate standard installation plans",
+        priceEstimation: "₹1,199 (Standard Install)",
         timeFrame: "2 - 3 Hours complete setup window",
         fullDetails: "A bad installation can permanently damage your compressor. We ensure perfect water drainage slope levels for indoor units, heavy-duty out-door wall bracket anchoring, and proper vacuuming to pull out line moisture.",
         includedSteps: [
@@ -177,7 +177,7 @@ export const servicesData = [
         shortDesc: "Deep pressure-wash using professional service jackets for maximum cooling and low electricity bills.",
         icon: "🚿",
         bgImage: "/jet.jpeg",
-        priceEstimation: "Affordable per-unit flat rates",
+        priceEstimation: "₹499 (Fixed Rate)",
         timeFrame: "1 Hour deep cleaning session",
         fullDetails: "Ordinary cleaning misses hidden dust deep within cooling coils. We use high-pressure water jet machines along with specialized service jackets to completely flush out dirt, bacteria, and mold blocks without messing up your walls.",
         includedSteps: [
