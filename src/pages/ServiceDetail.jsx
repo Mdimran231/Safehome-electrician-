@@ -12,11 +12,11 @@ const ServiceDetail = () => {
     // Dynamic Failure Guard System (404 State)
     if (!activeService) {
         return (
-            <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen flex flex-col items-center justify-center p-4 relative">
+            <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen flex flex-col items-center justify-center p-6 relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-amber-50/20 to-transparent pointer-events-none"></div>
-                <p className="text-5xl mb-3 animate-pulse">⚡</p>
-                <h2 className="text-xl font-black text-slate-800">Technical Service Signature Not Detected</h2>
-                <p className="text-xs text-slate-500 mt-1 max-w-xs text-center font-medium leading-relaxed">
+                <p className="text-5xl mb-4 animate-pulse">⚡</p>
+                <h2 className="text-xl font-black text-slate-800 text-center">Technical Service Signature Not Detected</h2>
+                <p className="text-xs text-slate-500 mt-2 max-w-xs text-center font-medium leading-relaxed">
                     The specified routing node does not point to a valid corporate architectural outline.
                 </p>
                 <button 
@@ -30,9 +30,9 @@ const ServiceDetail = () => {
     }
 
     return (
-        <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen pt-28 pb-16 relative">
+        <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen pt-24 sm:pt-32 pb-16 relative">
             {/* Ambient Soft Glows */}
-            <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#EAB308]/5 rounded-full blur-[140px] pointer-events-none"></div>
+            <div className="absolute top-1/4 left-0 w-72 h-72 sm:w-96 sm:h-96 bg-[#EAB308]/5 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none"></div>
 
             <div className="max-w-4xl mx-auto px-4 relative z-10">
                 
@@ -45,18 +45,19 @@ const ServiceDetail = () => {
                     <span>Return to Grid Architecture</span>
                 </button>
 
-                {/* Main Identity Banner */}
-                <div className="relative border border-slate-200 rounded-3xl overflow-hidden aspect-[21/9] bg-slate-100 mb-10 shadow-md">
+                {/* Main Identity Banner - Optimized Aspect Ratio for Mobile */}
+                <div className="relative border border-slate-200 rounded-2xl sm:rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[21/9] bg-slate-100 mb-8 sm:mb-10 shadow-md">
                     <img 
                         src={activeService.bgImage} 
                         alt={activeService.title} 
-                        className="w-full h-full object-cover brightness-[0.85]"
+                        className="w-full h-full object-cover brightness-[0.8]"
                     />
                     {/* Soft Bottom Shadow Transition */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
                     
-                    <div className="absolute bottom-6 left-6 right-6 flex items-end gap-4">
-                        <span className="text-2xl bg-white border border-slate-200 p-3 rounded-2xl hidden sm:inline-block shadow-md backdrop-blur-sm">
+                    {/* Layout adjusts on Mobile to stack nicely */}
+                    <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-4">
+                        <span className="text-xl sm:text-2xl bg-white border border-slate-200 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl inline-block w-fit shadow-md backdrop-blur-sm">
                             {activeService.icon}
                         </span>
                         <div>
@@ -71,9 +72,9 @@ const ServiceDetail = () => {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
                     
                     {/* Left Column: Comprehensive Scope Writeups */}
-                    <div className="md:col-span-8 space-y-6">
+                    <div className="md:col-span-8 space-y-6 order-1">
                         <div className="border-b border-slate-200 pb-3">
-                            <h2 className="text-sm font-black uppercase tracking-wider text-slate-400">Detailed Structural Scope</h2>
+                            <h2 className="text-xs sm:text-sm font-black uppercase tracking-wider text-slate-400">Detailed Structural Scope</h2>
                         </div>
                         <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
                             {activeService.fullDetails}
@@ -84,7 +85,7 @@ const ServiceDetail = () => {
                             <h3 className="text-xs font-black uppercase tracking-widest text-[#CA8A04]">Standard Execution Guidelines:</h3>
                             <div className="space-y-3">
                                 {activeService.includedSteps.map((step, idx) => (
-                                    <div key={idx} className="flex gap-4 bg-white border border-slate-200/60 p-4 rounded-xl shadow-sm">
+                                    <div key={idx} className="flex gap-3 sm:gap-4 bg-white border border-slate-200/60 p-4 rounded-xl shadow-sm">
                                         <span className="text-xs font-black text-[#CA8A04] h-7 w-7 rounded-lg bg-amber-50/60 border border-amber-100 flex items-center justify-center shrink-0">
                                             {idx + 1}
                                         </span>
@@ -97,8 +98,8 @@ const ServiceDetail = () => {
                         </div>
                     </div>
 
-                    {/* Right Column: Meta Metadata Metrics Callout */}
-                    <div className="md:col-span-4 space-y-4 sticky top-28">
+                    {/* Right Column: Meta Metadata Metrics Callout - Sticky on Desktop, Adaptive on Mobile */}
+                    <div className="md:col-span-4 space-y-4 md:sticky md:top-28 order-2 md:order-2">
                         <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm space-y-4">
                             <div>
                                 <p className="text-[10px] uppercase font-black tracking-wider text-slate-400">Service Deployment Period</p>
@@ -117,7 +118,7 @@ const ServiceDetail = () => {
                         {/* Direct Line Triggers */}
                         <a 
                             href="tel:+919155536625"
-                            className="block text-center bg-[#EAB308] hover:bg-[#CA8A04] text-white font-black py-4 rounded-xl text-xs sm:text-sm tracking-wide uppercase shadow-md shadow-amber-500/10 hover:shadow-lg transition-all transform active:scale-[0.99]"
+                            className="block text-center bg-[#EAB308] hover:bg-[#CA8A04] text-white font-black py-4 rounded-xl text-sm tracking-wide uppercase shadow-md shadow-amber-500/10 hover:shadow-lg transition-all transform active:scale-[0.99]"
                         >
                             📞 Call Operator Desk
                         </a>
