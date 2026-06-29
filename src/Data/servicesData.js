@@ -156,7 +156,7 @@ export const servicesData = [
     {
         id: "ac-installation",
         category: "ac",
-        title: "We Also Provide: Split & Window AC Installation",
+        title: "Window Split & Window AC Installation",
         shortDesc: "Flawless mounting, copper pipe flaring, and vacuum leak testing for maximum cooling efficiency.",
         icon: "❄️",
         bgImage: "/installaion.jpg",
@@ -173,7 +173,7 @@ export const servicesData = [
     {
         id: "ac-jet-cleaning",
         category: "ac",
-        title: "We Also Do: High-Pressure Eco Jet Cleaning",
+        title: "Window High-Pressure Eco Jet Cleaning",
         shortDesc: "Deep pressure-wash using professional service jackets for maximum cooling and low electricity bills.",
         icon: "🚿",
         bgImage: "/jet.jpeg",
