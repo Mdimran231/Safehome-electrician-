@@ -28,30 +28,36 @@ const Services = () => {
                 {/* Cards Container Matrix */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {servicesData.map((service) => (
-                        <div 
+                        <div
                             key={service.id}
                             onClick={() => navigate(`/services/${service.id}`)}
                             className="bg-white border border-slate-200/80 rounded-3xl overflow-hidden hover:border-[#EAB308] transition-all duration-300 group cursor-pointer flex flex-col justify-between shadow-md hover:shadow-xl shadow-slate-200/50"
                         >
                             {/* Card Image Wrapper */}
                             <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 border-b border-slate-100">
-                                <img 
-                                    src={service.bgImage} 
-                                    alt={service.title} 
+                                <img
+                                    src={service.bgImage}
+                                    alt={service.title}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-                                bag/>
+                                />
                                 {/* Overlay to ensure image looks clean on light theme */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
-                                
+
                                 {/* Floating Icon Badge */}
                                 <div className="absolute top-4 left-4 bg-white/95 border border-slate-200/50 h-12 w-12 rounded-xl flex items-center justify-center text-2xl shadow-md backdrop-blur-sm">
                                     {service.icon}
                                 </div>
 
-                                {/* Dynamic Condition: Shows Green Price Tag ONLY for AC Services */}
+                                {/* Dynamic Condition: Shows Large Emerald Price Tag ONLY for AC Services */}
                                 {service.category === 'ac' && service.priceEstimation && (
-                                    <div className="absolute top-4 right-4 bg-emerald-500 text-white text-[11px] font-black px-3 py-1.5 rounded-xl shadow-md tracking-wide uppercase border border-emerald-400/30">
-                                        ✓ {service.priceEstimation.includes('Starts') ? 'Best Deal' : service.priceEstimation.split(' ')[0]}
+                                    <div className="absolute top-4 right-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-sm sm:text-base font-black px-5 py-2.5 rounded-2xl shadow-[0_8px_20px_rgba(5,150,105,0.4)] tracking-widest uppercase border border-emerald-400/40 flex items-center gap-1.5 transform hover:scale-110 transition-all duration-200 z-20">
+                                        <span className="text-base sm:text-lg text-emerald-200">✓</span>
+                                        <span>
+                                            {service.priceEstimation.includes('Starts')
+                                                ? `₹${service.priceEstimation.replace(/[^0-9]/g, '')}+`
+                                                : service.priceEstimation.split(' ')[0]
+                                            }
+                                        </span>
                                     </div>
                                 )}
                             </div>

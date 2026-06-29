@@ -387,7 +387,7 @@ const Home = () => {
                                             </div>
 
                                             {/* Floating Top Right Price Token */}
-                                            {service.priceEstimation  && (
+                                            {service.priceEstimation && (
                                                 <div className="absolute top-4 right-4 bg-emerald-600 text-white text-[10px] font-black px-2.5 py-1.5 rounded-xl shadow-md tracking-wider uppercase">
                                                     {service.priceEstimation.split(' ')[0]}
                                                 </div>
@@ -490,54 +490,71 @@ const Home = () => {
 
             {/* 4. WHY CHOOSE US SECTION */}
             <section className="py-20 px-4 bg-slate-900 text-white relative overflow-hidden">
+                {/* Ambient Glowing Backgrounds */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[150px] pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/10 rounded-full blur-[150px] pointer-events-none"></div>
 
                 <div className="max-w-7xl mx-auto space-y-16 relative z-10">
+                    {/* Attacted Header Block */}
                     <div className="text-center space-y-3">
                         <span className="text-xs font-bold uppercase tracking-widest text-[#EAB308] bg-white/5 border border-white/10 px-4 py-1.5 rounded-full">
                             Why Choose Safe Home
                         </span>
                         <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
-                            Engineered For Your <span className="text-[#EAB308]">Safety & Peace of Mind</span>
+                            Dedicated To Your <span className="text-[#EAB308]">Safety & Complete Trust</span>
                         </h2>
-                        <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-                            We bridge the gap between skilled engineering standards and doorstep local convenience in Patna.
+                        <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto font-medium">
+                            We bring 100% reliable commercial service standards straight to your doorstep anywhere in Patna.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div className="bg-white/5 border border-white/10 p-8 rounded-3xl space-y-4 hover:bg-white/10 transition-all duration-300">
-                            <div className="text-3xl">⏱️</div>
-                            <h3 className="text-lg font-bold text-white">45-Min Express Arrival</h3>
-                            <p className="text-slate-400 text-sm leading-relaxed">
-                                Strategically localized teams stationed near Kankarbagh, Fraser Road, and Patna City ensure we hit your location in minutes.
-                            </p>
+                    {/* Fully Responsive Grid System Matrix */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+
+                        {/* Card 1: Express Arrival */}
+                        <div className="bg-white/5 border border-white/10 p-6 sm:p-8 rounded-3xl space-y-4 hover:bg-white/10 hover:border-yellow-500/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div className="text-4xl bg-white/5 w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border border-white/10">⏱️</div>
+                                <h3 className="text-lg font-black text-white tracking-wide">45-Min Express Arrival</h3>
+                                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mt-2 font-medium">
+                                    Our specialized service teams are stationed active near Kankarbagh, Fraser Road, and Patna City to reach your doorstep in minutes.
+                                </p>
+                            </div>
                         </div>
 
-                        <div className="bg-white/5 border border-white/10 p-8 rounded-3xl space-y-4 hover:bg-white/10 transition-all duration-300">
-                            <div className="text-3xl">🛡️</div>
-                            <h3 className="text-lg font-bold text-white">Verified Technicians</h3>
-                            <p className="text-slate-400 text-sm leading-relaxed">
-                                Every expert undergoes rigorous background documentation verification and strict technical skill certification mapping.
-                            </p>
+                        {/* Card 2: Verified Experts */}
+                        <div className="bg-white/5 border border-white/10 p-6 sm:p-8 rounded-3xl space-y-4 hover:bg-white/10 hover:border-blue-400/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div className="text-4xl bg-white/5 w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border border-white/10">🛡️</div>
+                                <h3 className="text-lg font-black text-white tracking-wide">100% Verified Experts</h3>
+                                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mt-2 font-medium">
+                                    Every service technician is fully background-checked, highly experienced, and certified to handle your home appliances safely.
+                                </p>
+                            </div>
                         </div>
 
-                        <div className="bg-white/5 border border-white/10 p-8 rounded-3xl space-y-4 hover:bg-white/10 transition-all duration-300">
-                            <div className="text-3xl">💎</div>
-                            <h3 className="text-lg font-bold text-white">No Hidden Pricing</h3>
-                            <p className="text-slate-400 text-sm leading-relaxed">
-                                Transparent itemized rate structures. Get transparent pricing details upfront before any work execution begins.
-                            </p>
+                        {/* Card 3: Transparent Pricing */}
+                        <div className="bg-white/5 border border-white/10 p-6 sm:p-8 rounded-3xl space-y-4 hover:bg-white/10 hover:border-yellow-500/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div className="text-4xl bg-white/5 w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border border-white/10">💎</div>
+                                <h3 className="text-lg font-black text-white tracking-wide">No Hidden Charges</h3>
+                                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mt-2 font-medium">
+                                    No surprise costs. You will get a complete crystal-clear rate breakdown and exact pricing approvals before our work begins.
+                                </p>
+                            </div>
                         </div>
 
-                        <div className="bg-white/5 border border-white/10 p-8 rounded-3xl space-y-4 hover:bg-white/10 transition-all duration-300">
-                            <div className="text-3xl">🛠️</div>
-                            <h3 className="text-lg font-bold text-white">Post-Service Warranty</h3>
-                            <p className="text-slate-400 text-sm leading-relaxed">
-                                Enjoy structured assurance with a reliable warranty support pipeline on executed service works.
-                            </p>
+                        {/* Card 4: Service Warranty */}
+                        <div className="bg-white/5 border border-white/10 p-6 sm:p-8 rounded-3xl space-y-4 hover:bg-white/10 hover:border-blue-400/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div className="text-4xl bg-white/5 w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border border-white/10">🛠️</div>
+                                <h3 className="text-lg font-black text-white tracking-wide">Post-Service Warranty</h3>
+                                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mt-2 font-medium">
+                                    Relax easily with our rock-solid service warranty. Any issues post-fix? Our team will handle it instantly with top priority.
+                                </p>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </section>
