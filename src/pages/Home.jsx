@@ -155,7 +155,7 @@ const Home = () => {
                             </p>
 
                             <p className="text-sm sm:text-base text-slate-100 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                                Beat the intense Patna heat. Get rapid, expert Split/Window AC servicing, gas charging, jet cleaning, and high-load electrical diagnostics at your doorstep today.
+                                Patna ki garmi ho ya ghar ki wiring ka jhanjhat! Get expert Split/Window AC servicing, jet cleaning, and high-precision electrician support for Ceiling Fans, Mixers, Irons, and complete house wiring safely at your doorstep today.
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
@@ -188,78 +188,69 @@ const Home = () => {
                             </div>
                         </div>
 
-                        {/* Right Quick Form Side */}
+                        {/* Right Side - Quick Services Micro Grid (Replacing the Form) */}
                         <div className="lg:col-span-5 w-full max-w-md mx-auto lg:ml-auto">
-                            <div className="bg-white/95 border border-slate-100 rounded-3xl p-6 sm:p-8 shadow-[0_25px_50px_rgba(0,0,0,0.25)] relative overflow-hidden backdrop-blur-md">
-                                <div className="mb-6">
-                                    <h3 className="text-xl font-black text-[#1E293B] tracking-wide">
-                                        Book AC / Electrical Service
+                            <div className="bg-white/95 border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-[0_25px_50px_rgba(15,23,42,0.15)] relative overflow-hidden backdrop-blur-md">
+
+                                {/* Badge Header */}
+                                <div className="mb-6 space-y-2">
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#CA8A04] bg-amber-50 border border-amber-200/60 px-3 py-1 rounded-full inline-block">
+                                        📍 Patna Local Service
+                                    </span>
+                                    <h3 className="text-xl font-black text-slate-800 tracking-tight">
+                                        All Types of Electric Services
                                     </h3>
-                                    <p className="text-xs text-slate-500 mt-1 font-medium">
-                                        Background-verified local professionals. Safe, clean & insured.
+                                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                                        Hamare experts aapke ghar aakar on-the-spot repair aur installation karenge. Quick 45-min doorstep service.
                                     </p>
                                 </div>
 
-                                <form onSubmit={handleHeroFormSubmit} className="space-y-4">
-                                    <div>
-                                        <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Your Name</label>
-                                        <input
-                                            type="text"
-                                            required
-                                            value={heroData.name}
-                                            onChange={(e) => setHeroData({ ...heroData, name: e.target.value })}
-                                            placeholder="Enter your name"
-                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-[#1E293B] placeholder-slate-400 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Contact Number</label>
-                                        <input
-                                            type="tel"
-                                            required
-                                            pattern="[0-9]{10}"
-                                            value={heroData.phone}
-                                            onChange={(e) => setHeroData({ ...heroData, phone: e.target.value })}
-                                            placeholder="Enter mobile number"
-                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-[#1E293B] placeholder-slate-400 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Required Service</label>
-                                        <div className="relative">
-                                            <select
-                                                value={heroData.service}
-                                                onChange={(e) => setHeroData({ ...heroData, service: e.target.value })}
-                                                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-700 focus:outline-none focus:border-[#EAB308] focus:bg-white transition-all appearance-none cursor-pointer"
-                                            >
-                                                {[...servicesData].sort((a, b) => (b.category === 'ac') - (a.category === 'ac')).map((s, idx) => (
-                                                    <option key={idx} value={s.title} className="bg-white text-[#1E293B]">{s.title}</option>
-                                                ))}
-                                            </select>
-                                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                                                ▼
+                                {/* Micro Services Visual Grid */}
+                                <div className="grid grid-cols-2 gap-3 mb-6">
+                                    {[
+                                        { name: "Ceiling Fan", icon: "🌀", desc: "Repair & Install" },
+                                        { name: "Mixer Grinder", icon: "🌪️", desc: "Blade & Motor" },
+                                        { name: "Electric Iron", icon: "🔌", desc: "Heating Issues" },
+                                        { name: "Table Fan", icon: "💨", desc: "Speed & Coil Fix" },
+                                        { name: "Geyser Service", icon: "🔥", desc: "Thermostat Fix" },
+                                        { name: "House Wiring", icon: "⚡", desc: "Fault Tracking" }
+                                    ].map((item, index) => (
+                                        <div
+                                            key={index}
+                                            className="border border-slate-100 bg-slate-50/50 p-3 rounded-2xl flex items-start gap-2.5 hover:bg-white hover:border-amber-400 hover:shadow-sm transition-all duration-200"
+                                        >
+                                            <span className="text-2xl mt-0.5 bg-white p-1 rounded-xl shadow-sm border border-slate-100/50 flex items-center justify-center h-9 w-9">
+                                                {item.icon}
+                                            </span>
+                                            <div className="flex flex-col">
+                                                <span className="text-xs font-black text-slate-800 leading-tight">{item.name}</span>
+                                                <span className="text-[10px] text-slate-400 font-bold mt-0.5">{item.desc}</span>
                                             </div>
                                         </div>
-                                    </div>
+                                    ))}
+                                </div>
 
-                                    {/* Inline Visiting Charge Notice inside Form */}
-                                    <div className="flex items-center justify-between bg-amber-50 border border-amber-200 rounded-xl px-4 py-2.5 text-xs text-amber-800 font-bold">
-                                        <span>Standard Visiting Charge:</span>
-                                        <span className="text-base font-black text-amber-900">₹299</span>
+                                {/* Dynamic Trust Notice */}
+                                <div className="flex items-center justify-between bg-emerald-50 border border-emerald-200/60 rounded-2xl px-4 py-3 text-xs font-bold text-emerald-800 mb-4 shadow-sm">
+                                    <div className="flex items-center gap-1.5">
+                                        <span className="text-sm">🛡️</span>
+                                        <span>Minimum Visiting Charge:</span>
                                     </div>
+                                    <span className="text-sm font-black text-emerald-900 bg-white px-2.5 py-0.5 rounded-lg border border-emerald-200 shadow-sm">
+                                        ₹299
+                                    </span>
+                                </div>
 
-                                    <button
-                                        type="submit"
-                                        className="w-full bg-[#1E293B] text-white font-bold py-4 rounded-xl text-sm tracking-wider uppercase shadow-md hover:bg-[#334155] transition-all duration-200 mt-2"
-                                    >
-                                        ❄️ Secure Instant Callback
-                                    </button>
-                                </form>
+                                {/* Direct Action Button to trigger Call / Inquiry */}
+                                <a
+                                    href="tel:+919876543210" /* Aap apna actual mobile number yahan map kar sakte hain */
+                                    className="w-full bg-slate-900 text-white font-black py-4 rounded-xl text-xs tracking-widest uppercase shadow-md hover:bg-slate-800 flex items-center justify-center gap-2 transform hover:scale-[1.02] transition-all duration-200"
+                                >
+                                    📞 Call For Instant Booking
+                                </a>
 
                                 <p className="text-[10px] text-center text-slate-400 mt-4 font-bold tracking-wide">
-                                    🛡️ Zero Inspection Fee with Work Order
+                                    ✅ Verified Mechanics • ✅ No Hidden Rates • ✅ Doorstep Within 45 Mins
                                 </p>
                             </div>
                         </div>
